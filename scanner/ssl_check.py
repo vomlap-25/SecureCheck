@@ -21,4 +21,4 @@ def check_ssl(url):
                 "tls_version": secure_socket.version(),
                 "certificate_valid": bool(certificate),
                 "cipher": secure_socket.cipher()[0]
-            }
+            }           
