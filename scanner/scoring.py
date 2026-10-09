@@ -5,11 +5,12 @@ def calculate_score(headers, ssl, cookies, server):
     # Headers
     for header in headers:
         if header["status"] == "missing":
-            if header["severity"] == "high":
+            severity=header["severity"].lower()
+            if severity== "high":
                 score -= 15
-            elif header["severity"] == "medium":
+            elif severity == "medium":
                 score -= 10
-            elif header["severity"] == "low":
+            elif severity == "low":
                 score -= 5
 
     # SSL

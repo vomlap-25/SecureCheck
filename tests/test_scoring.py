@@ -1,20 +1,26 @@
+
 from scanner.scoring import calculate_score
 
 
 def test_calculate_score():
-    headers = {
-        "strict_transport_security": True,
-        "content_security_policy": True
-    }
+    headers = [
+        {
+            "header": "Content-Security-Policy",
+            "status": "present",
+            "severity": "High"
+        },
+        {
+            "header": "Strict-Transport-Security",
+            "status": "present",
+            "severity": "High"
+        }
+    ]
 
     ssl = {
-        "valid": True
+        "certificate_valid": True
     }
 
-    cookies = {
-        "secure": True,
-        "httponly": True
-    }
+    cookies = []
 
     server = {
         "server": None,
@@ -25,3 +31,4 @@ def test_calculate_score():
 
     assert score == 100
     assert isinstance(score, int)
+    assert 0 <= score <= 100
